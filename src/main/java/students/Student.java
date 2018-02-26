@@ -38,6 +38,16 @@ public final class Student {
     return courses;
   }
 
+  public static StudentCriterion getSmartnessCriterion(final double threshold) {
+//    threshold++; // threshold must be "effectively final" because the object
+//    containing the lambda behavior takes a *copy* of it!
+    return s -> s.gpa > threshold;
+  }
+//  private static final StudentCriterion smartnessCriterion = s -> s.gpa > 3;
+//  public static StudentCriterion getSmartnessCriterion() {
+//    return smartnessCriterion;
+//  }
+
 //  public void setCourses(List<String> courses) {
 //    this.courses = courses;
 //  }

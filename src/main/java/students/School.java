@@ -50,10 +50,10 @@ public class School {
 
   public static void main(String[] args) {
     List<Student> school = Arrays.asList(
-        Student.ofNameGpaCourses("Fred", 3.2, new String[]{"Math","Physics"}),
+        Student.ofNameGpaCourses("Fred", 3.2, new String[]{"Math", "Physics"}),
         Student.ofNameGpaCourses("Jim", 2.2, "Art"),
         Student.ofNameGpaCourses("Albert", 1.2, "Art", "History", "Journalism", "Political Science"),
-        Student.ofNameGpaCourses("Sheila", 3.8, "Math","Physics", "Chemistry")
+        Student.ofNameGpaCourses("Sheila", 3.8, "Math", "Physics", "Chemistry")
     );
 
     showAll(school);
@@ -65,8 +65,19 @@ public class School {
     showAll(getStudentsByCriterion(school, new SmartCriterion()));
     showAll(getStudentsByCriterion(school, new EnthusiamCriterion()));
     showAll(getStudentsByCriterion(school,
-        (Student s) -> s.getGpa() < 3
-        ));
+//        (Student s) -> s.getGpa() < 3
+//        (s) -> s.getGpa() < 3
+//        s -> s.getGpa() < 3
+        s -> {
+          System.out.println("Checking student " + s + " against gpa threshold of three");
+          return s.getGpa() < 3;
+        }
+//        (Student s) -> s.getGpa() < 3
+    ));
+
+    showAll(getStudentsByCriterion(school, s -> s.getGpa() < 3));
+    showAll(getStudentsByCriterion(school, Student.getSmartnessCriterion(2)));
+
     showAll(school);
   }
 }
