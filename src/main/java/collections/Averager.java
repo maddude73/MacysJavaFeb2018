@@ -40,8 +40,10 @@ public class Averager {
         .parallel()
         .limit(300_000_000L)
 //        .limit(3_000_000L)
-        .map(x -> Math.sin(x))
-        .collect(() -> new Average(), (a, d) -> a.include(d), (a, a2) -> a.merge(a2));
+//        .map(x -> Math.sin(x))
+        .map(Math::sin)
+//        .collect(() -> new Average(), (a, d) -> a.include(d), (a, a2) -> a.merge(a2));
+        .collect(Average::new, Average::include, Average::merge);
     long time = System.nanoTime() - start;
 
     System.out.printf("Average is %6.4f, time taken was %6.4f seconds\n",
