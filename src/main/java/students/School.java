@@ -58,8 +58,31 @@ public class School {
 
     showAll(school);
 
-    Comparator<Student> gradeOrder = new StudentGradeOrdering();
-    Collections.sort(school, gradeOrder);
+//    Comparator<Student> gradeOrder = new StudentGradeOrdering();
+//    Collections.sort(school, gradeOrder);
+
+    Collections.sort(school, (o1, o2) -> Double.compare(o1.getGpa(), o2.getGpa()));
+//    Collections.sort(school, (o1, o2) -> /*{
+//        return */Double.compare(o1.getGpa(), o2.getGpa())/*;
+//      }*/
+//    );
+//    Collections.sort(school, (o1, o2) -> {
+//        return Double.compare(o1.getGpa(), o2.getGpa());
+//      }
+//    );
+//    Collections.sort(school, (Student o1, Student o2) -> {
+//        return Double.compare(o1.getGpa(), o2.getGpa());
+//      }
+//    );
+//    Collections.sort(school, /*new*/
+//
+//    /*public class StudentGradeOrdering implements *//*Comparator<Student>() {
+//      @Override
+//      public int compare*/(Student o1, Student o2) -> {
+//        return Double.compare(o1.getGpa(), o2.getGpa());
+//      }
+//    /*}*/
+//    );
     showAll(school);
 
     showAll(getStudentsByCriterion(school, new SmartCriterion()));
